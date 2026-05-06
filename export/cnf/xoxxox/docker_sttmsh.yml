@@ -1,0 +1,16 @@
+networks:
+  default:
+    name: xoxxox_netmid
+    external: true
+services:
+  xoxxox_sttmsh:
+    image: xoxxox/envmsh:001
+    container_name: xoxxox_sttmsh
+    volumes:
+    - ../../../export:/opt/common
+    - ../../../import/cnnmmd_xoxxox_sttmsh/appmsh/msh:/root/.cache/moonshine_voice
+    env_file:
+    - ./envdir.txt
+    ports:
+    - 18101:80
+    command: "/env/python/bin/python3 /opt/common/bin/xoxxox/srvstt.py --engine xoxxox/engine_sttmsh"
